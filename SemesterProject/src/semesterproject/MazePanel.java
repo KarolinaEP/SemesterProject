@@ -20,7 +20,7 @@ import javax.swing.Timer;
  */
 public class MazePanel extends JPanel{
     //baseline parameters...
-   private final static int WIDTH = 800, HEIGHT = 600, U_RATE = 32;
+   private final static int WIDTH = 200, HEIGHT = 200, U_RATE = 32;
    //change keyboard controls here...
    protected final static int K_U = KeyEvent.VK_UP,     //used to move up
                               K_D = KeyEvent.VK_DOWN,   //used to move down
@@ -42,7 +42,20 @@ public class MazePanel extends JPanel{
       Font font = new Font("Times",Font.BOLD, 16);
       page.setFont(font);
       page.setColor(Color.WHITE);
-      
    }
-   
+    
+    protected class PolyListener implements ActionListener{
+      //--------------------------------------------------------------
+      //  Updates the position of the image and possibly the direction
+      //  of movement whenever the timer fires an action event.
+      //--------------------------------------------------------------
+      @Override
+      public void actionPerformed (ActionEvent event){        
+         if (key_down[0]){  }
+         if (key_down[1]){  }
+         if (key_down[2]){  }
+         if (key_down[3]){  }
+         
+      }
+    }
 }
