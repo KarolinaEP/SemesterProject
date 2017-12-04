@@ -1,5 +1,7 @@
 package semesterproject;
 
+import javax.swing.JFrame;
+
 /**
  * Semester Project: Navigating through a maze.
  *      - on github
@@ -13,7 +15,11 @@ package semesterproject;
 public class SemesterProject {
 
     public static void main(String[] args) {
-        
+        JFrame frame = new JFrame ("Maze");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(new semesterproject.MazePanel());
+        frame.pack();
+        frame.setVisible(true);
     }
     
 }
