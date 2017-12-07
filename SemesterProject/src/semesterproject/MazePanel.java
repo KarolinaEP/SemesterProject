@@ -27,7 +27,7 @@ public class MazePanel extends JPanel{
                               K_L = KeyEvent.VK_LEFT,   //used to move left
                               K_R = KeyEvent.VK_RIGHT;  //used to move right
    //key array to determine if a key is being held down by the person:
-   protected boolean[] key_down = {false,false,false,false,false,false}; //keeps track of keys held
+   //protected boolean[] key_down = {false,false,false,false,false,false}; //keeps track of keys held
    
    protected Timer update;             //the synchronous event generator
    protected Random r = new Random();  //a source of uncertainty
@@ -51,10 +51,10 @@ public class MazePanel extends JPanel{
       //--------------------------------------------------------------
       @Override
       public void actionPerformed (ActionEvent event){        
-         if (key_down[0]){  }
-         if (key_down[1]){  }
-         if (key_down[2]){  }
-         if (key_down[3]){  }
+         if (key_down[0]){p.set_position(0);  }
+         if (key_down[1]){p.set_position(1);  }
+         if (key_down[2]){p.set_position(2);  }
+         if (key_down[3]){p.set_position(3);  }
          
       }
     }
