@@ -11,7 +11,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author mwoodard
+//* 
  */
 public class GameObject {
     
