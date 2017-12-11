@@ -22,16 +22,16 @@ public class Player extends GameObject{
         int v; //variable used to change position value
         switch (d) {
             case 0: //down
-                v=super.get_position()[1]-yinc;
+                v=get_position()[1]-yinc;
                 super.set_position(get_position()[0],v); break;
             case 1: //up
-                v=super.get_position()[1]+yinc;
+                v=get_position()[1]+yinc;
                 super.set_position(get_position()[0],v); break;
             case 2: //left
-                v=super.get_position()[0]-xinc;
+                v=get_position()[0]-xinc;
                 super.set_position(v,get_position()[1]); break;
             default: //right
-                v=super.get_position()[0]+xinc;
+                v=get_position()[0]+xinc;
                 super.set_position(v,get_position()[1]); break;
         }
     }
