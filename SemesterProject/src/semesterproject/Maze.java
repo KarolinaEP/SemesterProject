@@ -13,19 +13,11 @@ import java.util.Scanner;
 public class Maze {
     private int[][] map;
     private Random rand = new Random(1);
+    MazePool r = new MazePool();
     public Maze(){
-        map = new int[10][10];
-//       int[][] map = {{0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 1, 0, 0, 0 ,0, 0},
-//       {0, 0, 0, 0 ,1 ,0 ,0 ,0, 0 ,0},
-//       {0, 0, 0, 0, 1, 0, 0 ,0 ,0, 0},
-//       {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 1 ,0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 1 ,0 ,0 ,0, 0, 0},
-//       {0, 0, 0, 0, 1, 0, 0 ,0 ,0, 0},
-//       {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 1, 0, 0, 0, 0, 0}};
-//       this.map=map;
+//        map = new int[10][10];
+       
+       this.map=r.get_maze();
    }
     
     public Maze (File file) {

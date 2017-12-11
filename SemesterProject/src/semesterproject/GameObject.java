@@ -35,9 +35,11 @@ public class GameObject {
         int wt = w.get_position()[1];
         int wr = w.get_size()[0]+wl;
         int wb = wt+w.get_size()[1];
-        int pl = p.get_position()[0],pt = p.get_position()[1];
-        int pr = p.get_size()[0]+pl, pb = pt+p.get_size()[1];
-        System.out.println(wl+' '+wt+' '+pl+' '+pt);
+        int pl = p.get_position()[0];
+        int pt = p.get_position()[1];
+        int pr = p.get_size()[0]+pl;
+        int pb = pt+p.get_size()[1];
+        System.out.println(" "+wl+" "+wt+" "+pl+" "+pt);
         if( ((pl>wl)&&(pl<wr))||(((pr>wl)&&(pr<wr)) ) && ( ((pt>wt)&&(pt<wb))||((pb>wt)&&(pb<wb)) ) ){ 
             
             return true;

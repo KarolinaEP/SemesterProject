@@ -12,6 +12,7 @@ import java.util.Random;
  * @version December 6, 2017
  */
 public class MazePool {
+    int[][] mazewalls;
 //    private File[] files;
 //    private ArrayList<String> results;
 //    
@@ -47,6 +48,11 @@ public class MazePool {
             {0,0,1,0,0,0,0,1,0,1},
             {1,1,1,0,1,1,0,0,0,1},
             {1,0,0,0,0,1,1,1,1,1}};
+        this.mazewalls=mazewalls;
+    }
+    
+    public int[][] get_maze(){
+        return mazewalls;
     }
     
 }
