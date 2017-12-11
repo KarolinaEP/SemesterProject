@@ -106,7 +106,7 @@ public class MazePanel extends JPanel{
          if (key_down[3]){ p.set_position(3); }
          
          //update and draw the current game state
-         //process_collisions();
+         process_collisions();
          repaint();         
          //stops the game when player has no remaining lives
 //         if(p.end()){ update.stop(); }
@@ -116,7 +116,7 @@ public class MazePanel extends JPanel{
       public void process_collisions(){
           boolean hit = false;
           for(int i = 0; i < w.size() && !hit; i++){
-            GameObject x = w.get(i);
+            Wall x = w.get(i);
             if(g.hit(x,p)){ hit = true; } 
           }
           if(hit){                       

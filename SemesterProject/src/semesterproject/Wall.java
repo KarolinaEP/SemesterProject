@@ -10,11 +10,15 @@ import java.awt.Graphics;
  */
 public class Wall extends GameObject{
     
-//    private int xpo;int ypo;
+    private int xpo;int ypo;
     
     public Wall(int xpo,int ypo,int width,int height,int xinc,int yinc){
         super(xpo,ypo,width,height,0,0);
+        this.xpo=xpo;this.ypo=ypo;
     }
+    
+    @Override
+    public int[] get_position(){int[] x={xpo,ypo};return x;}
     
     public void paint(Graphics g){
       Font font = new Font("Times",Font.BOLD, 14);
