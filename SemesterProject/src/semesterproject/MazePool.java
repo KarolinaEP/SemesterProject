@@ -32,7 +32,7 @@ public class MazePool {
     public Maze getMazePuzzle() {
         int r = (new Random()).nextInt(results.size());  
         System.out.println("r="  + r);                   
-        return new Maze(files[r], 10);                  
+        return new Maze(files[r]);                  
     }
     
     

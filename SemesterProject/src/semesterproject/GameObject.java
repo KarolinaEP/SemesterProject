@@ -37,7 +37,7 @@ public class GameObject {
         int wb = wt+w.get_size()[1];
         int pl = p.get_position()[0],pt = p.get_position()[1];
         int pr = p.get_size()[0]+pl, pb = pt+p.get_size()[1];
-        //check a rectagular area to see if x_p and y_p are inside
+        System.out.println(wl+' '+wt+' '+pl+' '+pt);
         if( ((pl>wl)&&(pl<wr))||(((pr>wl)&&(pr<wr)) ) && ( ((pt>wt)&&(pt<wb))||((pb>wt)&&(pb<wb)) ) ){ 
             
             return true;

@@ -11,6 +11,7 @@ import java.awt.Graphics;
  */
 public class Player extends GameObject{
     private final int xinc,yinc;
+    private int xpo;int ypo;
     
     public Player(int xpo,int ypo,int width,int height,int xinc,int yinc){
         super(xpo,ypo,width,height,xinc,yinc);
@@ -34,6 +35,9 @@ public class Player extends GameObject{
                 super.set_position(v,super.get_position()[1]); break;
         }
     }
+    
+    @Override
+    public int[] get_position(){int[] x={xpo,ypo};return x;}
     
     public void paint(Graphics g){
       Font font = new Font("Times",Font.BOLD, 14);
