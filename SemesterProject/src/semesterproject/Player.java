@@ -38,7 +38,11 @@ public class Player extends GameObject{
     public void paint(Graphics g){
       Font font = new Font("Times",Font.BOLD, 14);
       g.setFont(font);
-      g.setColor(Color.GREEN);
+      g.setColor(Color.RED);
       g.fillRect(super.get_position()[0],super.get_position()[1],super.get_size()[1],super.get_size()[0]);
     }
+    
+//    public boolean end(){
+//        if()
+//    }
 }

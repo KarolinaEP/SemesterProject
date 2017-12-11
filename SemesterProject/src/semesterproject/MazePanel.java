@@ -32,7 +32,7 @@ public class MazePanel extends JPanel{
    protected Random r = new Random();  //a source of uncertainty
    
    //polymorphic example
-   protected Player  p; Maze m = new Maze();
+   protected GameObject g;Player p=new Player(150,150,SIZE,SIZE,10,10); Maze m = new Maze();
    protected ArrayList<Wall> w = new ArrayList<Wall>();
    
    public MazePanel(){
@@ -58,41 +58,79 @@ public class MazePanel extends JPanel{
       //starts the updating
       update.start();
    }
+   
+//    public void process_collisions(){
+//          boolean hit = false;
+//          for(int i = 0; i < w.size() && !hit; i++){
+//            Player x = w.get(i);
+//            if(p.hit(x,p)){ hit = true; } 
+//          }
+//          if(hit){
+//              System.out.println("Hit Detected..."); 
+//              p.loose_life();                        
+//              p.set_pos(0, HEIGHT/2);
+//          }
+//      }
 
-    //-----------------------------------------------------------------
-    //  Draws the images of objects at current locations.
-    //-----------------------------------------------------------------   
-    @Override
-    public void paintComponent (Graphics page){ 
+   //-----------------------------------------------------------------
+   //  Draws the images of objects at current locations.
+   //-----------------------------------------------------------------
+   @Override
+   public void paintComponent (Graphics page){ 
       super.paintComponent(page);
       Font font = new Font("Times",Font.BOLD, 16);
       page.setFont(font);
       page.setColor(Color.WHITE);
+      
+      
+      for(int i = 0; i < w.size(); i++){
+        w.get(i).paint(page);
+      }
+      p.paint(page); //paint the attack or defense piece
+      
    }
- 
-    //*****************************************************************
-    //  Represents the action listener for the timer.
-    //*****************************************************************    
-    protected class MazeListener implements ActionListener{
+
+   //*****************************************************************
+   //  Represents the action listener for the timer.
+   //*****************************************************************
+   protected class MazeListener implements ActionListener{
       //--------------------------------------------------------------
       //  Updates the position of the image and possibly the direction
       //  of movement whenever the timer fires an action event.
       //--------------------------------------------------------------
       @Override
       public void actionPerformed (ActionEvent event){        
-         if (key_down[0]){p.set_position(0);  }
-         if (key_down[1]){p.set_position(1);  }
-         if (key_down[2]){p.set_position(2);  }
-         if (key_down[3]){p.set_position(3);  }
+         if (key_down[0]){ p.set_position(0); }
+         if (key_down[1]){ p.set_position(1); }
+         if (key_down[2]){ p.set_position(2); }
+         if (key_down[3]){ p.set_position(3); }
          
+         //update and draw the current game state
+         //process_collisions();
+         repaint();         
+         //stops the game when player has no remaining lives
+//         if(p.end()){ update.stop(); }
       }
-    }
-
-    //*****************************************************************
-    //  Represents the listener for keyboard activity.
-    //*****************************************************************    
-    protected class ControllerListener implements KeyListener{
-      //listens for players pressing up,down,left,right for control
+      
+      
+      public void process_collisions(){
+          boolean hit = false;
+          for(int i = 0; i < w.size() && !hit; i++){
+            GameObject x = w.get(i);
+            if(g.hit(x,p)){ hit = true; } 
+          }
+          if(hit){                       
+              p.set_position(0, HEIGHT/2);
+          }
+      }
+   }
+   
+   
+   //*****************************************************************
+   //  Represents the listener for keyboard activity.
+   //*****************************************************************
+   protected class ControllerListener implements KeyListener{
+      //listens for players pressing 1,2,3,4,7,8,9,0 for control
       @Override
       public void keyPressed (KeyEvent event){  
          switch (event.getKeyCode()){
@@ -110,19 +148,8 @@ public class MazePanel extends JPanel{
                break;
          }
       }
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
-    
-//      @Override
+      
+      @Override
       public void keyReleased (KeyEvent event) {
          switch (event.getKeyCode()){
             case K_U:
@@ -143,7 +170,7 @@ public class MazePanel extends JPanel{
       //--------------------------------------------------------------
       //  Provide empty definitions for unused event methods.
       //--------------------------------------------------------------
-//      @Override
+      @Override
       public void keyTyped (KeyEvent event) {}
-      
-}
+   }
+}    

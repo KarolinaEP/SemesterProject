@@ -19,7 +19,7 @@ public class Wall extends GameObject{
     public void paint(Graphics g){
       Font font = new Font("Times",Font.BOLD, 14);
       g.setFont(font);
-      g.setColor(Color.BLACK);
+      g.setColor(Color.WHITE);
       g.fillRect(super.get_position()[0],super.get_position()[1],super.get_size()[1],super.get_size()[0]);
     }
 }
