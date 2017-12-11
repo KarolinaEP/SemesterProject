@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 public class SemesterProject {
 
     public static void main(String[] args) {
+        Maze m = new Maze();
         JFrame frame = new JFrame ("Maze");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(new semesterproject.MazePanel());

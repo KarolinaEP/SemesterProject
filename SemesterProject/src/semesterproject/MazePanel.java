@@ -32,14 +32,19 @@ public class MazePanel extends JPanel{
    protected Random r = new Random();  //a source of uncertainty
    
    //polymorphic example
-   protected Player  p; Maze m;
+   protected Player  p; Maze m = new Maze();
    protected ArrayList<Wall> w = new ArrayList<Wall>();
    
    public MazePanel(){
-       int[][] maze = m.get_map();
-       for(int i = 0; i < maze.length; i++){
-           for(int j = 0; j < maze[i].length; j++){
-               if(maze[i][j] == 1)
+       int[][] t = new int[10][10];
+       for(int a = 0; a < 10; a++){
+           for(int b = 0; b < 10; b++){
+               t[a][b]=m.get_map(a, b);
+           }
+       }
+       for(int i = 0; i < 10; i++){
+           for(int j = 0; j < 10; j++){
+               if(m.get_map(i, j) == 1)
                     w.add(new Wall(i*20,j*20,SIZE,SIZE,0,0));
            }
       }

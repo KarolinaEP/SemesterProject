@@ -13,7 +13,17 @@ public class Maze {
     private int[][] map;
     
     public Maze(){
-       int[][] map = new int[10][10];
+       int[][] map = {{0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 1, 0, 0, 0 ,0, 0},
+       {0, 0, 0, 0 ,1 ,0 ,0 ,0, 0 ,0},
+       {0, 0, 0, 0, 1, 0, 0 ,0 ,0, 0},
+       {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 1 ,0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 1 ,0 ,0 ,0, 0, 0},
+       {0, 0, 0, 0, 1, 0, 0 ,0 ,0, 0},
+       {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 1, 0, 0, 0, 0, 0}};
+       this.map=map;
    }
     
     public Maze (File file, int size) {
@@ -39,5 +49,6 @@ public class Maze {
         }
     }
     
-    public int[][] get_map(){return map;}
+    public int get_map(int x,int y){return map[x][y];}
+    public int[] map_size(){int[] q = {map.length,map[0].length};return q;}
 }
