@@ -20,21 +20,31 @@ import javax.swing.Timer;
  */
 public class MazePanel extends JPanel{
     //baseline parameters...
-   private final static int WIDTH = 200, HEIGHT = 200, U_RATE = 32;
+   private final static int WIDTH = 200, HEIGHT = 200, U_RATE = 32, SIZE=20;
    //change keyboard controls here...
    protected final static int K_U = KeyEvent.VK_UP,     //used to move up
                               K_D = KeyEvent.VK_DOWN,   //used to move down
                               K_L = KeyEvent.VK_LEFT,   //used to move left
                               K_R = KeyEvent.VK_RIGHT;  //used to move right
    //key array to determine if a key is being held down by the person:
-   //protected boolean[] key_down = {false,false,false,false,false,false}; //keeps track of keys held
+   protected boolean[] key_down = {false,false,false,false,false,false}; //keeps track of keys held
    
    protected Timer update;             //the synchronous event generator
    protected Random r = new Random();  //a source of uncertainty
    
    //polymorphic example
-   protected Player  p;
+   protected Player  p; Maze m;
+   protected ArrayList<Wall> w = new ArrayList<Wall>();
    
+   public MazePanel(){
+       
+       
+       for(int i = 0; i < m.get_map().length; i++){
+           for(int j=0;j<m.get_map()[i].length;j++){
+               w.add(new Wall(i,j,SIZE,SIZE,0,0));
+           }
+      }
+   }
    
     @Override
     public void paintComponent (Graphics page){ 

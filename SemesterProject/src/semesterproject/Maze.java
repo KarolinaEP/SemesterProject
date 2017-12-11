@@ -34,4 +34,6 @@ public class Maze {
             System.out.println("File cannot be read - " + file);
         }
     }
+    
+    public int[][] get_map(){return map;}
 }
