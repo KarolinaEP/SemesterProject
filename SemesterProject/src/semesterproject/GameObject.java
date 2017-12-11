@@ -27,8 +27,7 @@ public class GameObject {
       Font font = new Font("Times",Font.BOLD, 14);
       g.setFont(font);
       g.setColor(Color.WHITE);
-      g.fillOval(xpo,ypo,width,height);
-      g.drawString(xpo+" "+ypo,xpo-width/2,ypo);
+      g.fillRect(xpo,ypo,width,height);
     }
     
 }
