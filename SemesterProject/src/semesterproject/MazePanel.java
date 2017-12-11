@@ -19,8 +19,7 @@ import javax.swing.Timer;
  * @version 4 December 2017
  */
 public class MazePanel extends JPanel{
-    //baseline parameters...
-   private final static int WIDTH = 200, HEIGHT = 200, U_RATE = 32, SIZE=20;
+   private final static int WIDTH = 200, HEIGHT = 200, U_RATE = 32, SIZE=20; //baseline parameters...
    //change keyboard controls here...
    protected final static int K_U = KeyEvent.VK_UP,     //used to move up
                               K_D = KeyEvent.VK_DOWN,   //used to move down
@@ -37,15 +36,27 @@ public class MazePanel extends JPanel{
    protected ArrayList<Wall> w = new ArrayList<Wall>();
    
    public MazePanel(){
-       
-       
-       for(int i = 0; i < m.get_map().length; i++){
-           for(int j=0;j<m.get_map()[i].length;j++){
-               w.add(new Wall(i,j,SIZE,SIZE,0,0));
+       int[][] maze = m.get_map();
+       for(int i = 0; i < maze.length; i++){
+           for(int j = 0; j < maze[i].length; j++){
+               if(maze[i][j] == 1)
+                    w.add(new Wall(i*20,j*20,SIZE,SIZE,0,0));
            }
       }
+      //instatiates a new timer for update method ie drawing
+      update = new Timer(U_RATE, new MazePanel.MazeListener());
+      //sets up the keyboard control listener
+      addKeyListener (new ControllerListener());
+      setPreferredSize (new Dimension(WIDTH, HEIGHT));
+      setBackground (Color.black);
+      setFocusable(true);
+      //starts the updating
+      update.start();
    }
-   
+
+    //-----------------------------------------------------------------
+    //  Draws the images of objects at current locations.
+    //-----------------------------------------------------------------   
     @Override
     public void paintComponent (Graphics page){ 
       super.paintComponent(page);
@@ -53,8 +64,11 @@ public class MazePanel extends JPanel{
       page.setFont(font);
       page.setColor(Color.WHITE);
    }
-    
-    protected class PolyListener implements ActionListener{
+ 
+    //*****************************************************************
+    //  Represents the action listener for the timer.
+    //*****************************************************************    
+    protected class MazeListener implements ActionListener{
       //--------------------------------------------------------------
       //  Updates the position of the image and possibly the direction
       //  of movement whenever the timer fires an action event.
@@ -68,4 +82,63 @@ public class MazePanel extends JPanel{
          
       }
     }
+
+    //*****************************************************************
+    //  Represents the listener for keyboard activity.
+    //*****************************************************************    
+    protected class ControllerListener implements KeyListener{
+      //listens for players pressing up,down,left,right for control
+      @Override
+      public void keyPressed (KeyEvent event){  
+         switch (event.getKeyCode()){
+            case K_U:
+               key_down[0] = true;
+               break;
+            case K_D:
+               key_down[1] = true;
+               break;
+            case K_L:
+               key_down[2] = true;
+               break;
+            case K_R:
+               key_down[3] = true;
+               break;
+         }
+      }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    }
+    
+//      @Override
+      public void keyReleased (KeyEvent event) {
+         switch (event.getKeyCode()){
+            case K_U:
+               key_down[0] = false;
+               break;
+            case K_D:
+               key_down[1] = false;
+               break;
+            case K_L:
+               key_down[2] = false;
+               break;
+            case K_R:
+               key_down[3] = false;
+               break;
+         }
+      }
+      
+      //--------------------------------------------------------------
+      //  Provide empty definitions for unused event methods.
+      //--------------------------------------------------------------
+//      @Override
+      public void keyTyped (KeyEvent event) {}
+      
 }

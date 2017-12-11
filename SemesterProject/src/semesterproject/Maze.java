@@ -5,12 +5,16 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- *
  * 
+ * @author Karolina Pilip, Matt Woodard, Kaleigh McGuirl
+ * @version 9 December 2017 
  */
 public class Maze {
-    
     private int[][] map;
+    
+    public Maze(){
+       int[][] map = new int[10][10];
+   }
     
     public Maze (File file, int size) {
         int i = 0, j = 0;

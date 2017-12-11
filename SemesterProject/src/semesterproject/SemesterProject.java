@@ -6,8 +6,10 @@ import javax.swing.JFrame;
  * Semester Project: Navigating through a maze.
  *      - on github
  *          ~ https://github.com/KarolinaEP/SemesterProject.git
- *      - randomly generated maze
+ *      - manually generated maze
  *      - using the arrow keys
+ *          - not including key held down 
+ *          - key must be manually pressed with each move
  *      - possibly include a jump scare
  * @author Karolina Pilip, Matt Woodard, Kaleigh McGuirl
  * @version 29 November 2017
