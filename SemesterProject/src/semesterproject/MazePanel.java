@@ -32,7 +32,9 @@ public class MazePanel extends JPanel{
    protected Random r = new Random();  //a source of uncertainty
    
   
-   protected GameObject g = new GameObject(0,0,SIZE,SIZE,10,10);Player p=new Player(150,150,SIZE,SIZE,10,10); Maze m = new Maze();MazePool mp;
+   protected GameObject g = new GameObject(0,0,SIZE,SIZE,10,10);
+   Player p=new Player(150,150,SIZE,SIZE,10,10); 
+   Maze m = new Maze();MazePool mp;
    protected ArrayList<Wall> w = new ArrayList<Wall>();
    
    public MazePanel(){
@@ -110,7 +112,7 @@ public class MazePanel extends JPanel{
             
           }
           if(hit){           
-              System.out.println("Hit Detected..."); 
+              System.out.println("Hit Detected"); 
               p.set_position(0, HEIGHT/2);
           }
       }
@@ -120,48 +122,50 @@ public class MazePanel extends JPanel{
    //*****************************************************************
    //  Represents the listener for keyboard activity.
    //*****************************************************************
-   protected class ControllerListener implements KeyListener{
-      //listens for players pressing 1,2,3,4,7,8,9,0 for control
-      @Override
-      public void keyPressed (KeyEvent event){  
-         switch (event.getKeyCode()){
-            case K_U:
-               key_down[0] = true;
-               break;
-            case K_D:
-               key_down[1] = true;
-               break;
-            case K_L:
-               key_down[2] = true;
-               break;
-            case K_R:
-               key_down[3] = true;
-               break;
-         }
-      }
-      
-      @Override
-      public void keyReleased (KeyEvent event) {
-         switch (event.getKeyCode()){
-            case K_U:
-               key_down[0] = false;
-               break;
-            case K_D:
-               key_down[1] = false;
-               break;
-            case K_L:
-               key_down[2] = false;
-               break;
-            case K_R:
-               key_down[3] = false;
-               break;
-         }
-      }
-      
+    protected class ControllerListener implements KeyListener {
+
+        //listens for players pressing 1,2,3,4,7,8,9,0 for control
+        @Override
+        public void keyPressed(KeyEvent event) {
+            switch (event.getKeyCode()) {
+                case K_U:
+                    key_down[0] = true;
+                    break;
+                case K_D:
+                    key_down[1] = true;
+                    break;
+                case K_L:
+                    key_down[2] = true;
+                    break;
+                case K_R:
+                    key_down[3] = true;
+                    break;
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent event) {
+            switch (event.getKeyCode()) {
+                case K_U:
+                    key_down[0] = false;
+                    break;
+                case K_D:
+                    key_down[1] = false;
+                    break;
+                case K_L:
+                    key_down[2] = false;
+                    break;
+                case K_R:
+                    key_down[3] = false;
+                    break;
+            }
+        }
+
       //--------------------------------------------------------------
-      //  Provide empty definitions for unused event methods.
-      //--------------------------------------------------------------
-      @Override
-      public void keyTyped (KeyEvent event) {}
-   }
+        //  Provide empty definitions for unused event methods.
+        //--------------------------------------------------------------
+        @Override
+        public void keyTyped(KeyEvent event) {
+        }
+    }
 }    

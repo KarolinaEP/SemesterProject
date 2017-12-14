@@ -11,27 +11,37 @@ import java.awt.Graphics;
  */
 public class Player extends GameObject{
     private final int xinc,yinc;
-    private int xpo,ypo,size;
+    private int size;
     
     public Player(int xpo,int ypo,int width,int height,int xinc,int yinc){
         super(xpo,ypo,width,height,xinc,yinc);
         this.xinc=xinc;this.yinc=yinc;size=height;
     }
     
+    public void setPositionTest(int x, int y){
+        xpo = x;
+        ypo = y;
+    }
+    
     public void set_position(int d){
         int v; //variable used to change position value
         switch (d) {
             case 0: //down
-                v=get_position()[1]-yinc;
+                v=super.get_position()[1]-yinc;
+                System.out.println("case 0");
                 super.set_position(get_position()[0],v); break;
+                
             case 1: //up
-                v=get_position()[1]+yinc;
+                v=super.get_position()[1]+yinc;
+                System.out.println("case 1");
                 super.set_position(get_position()[0],v); break;
             case 2: //left
-                v=get_position()[0]-xinc;
+                v=super.get_position()[0]-xinc;
+                System.out.println("case 2");
                 super.set_position(v,get_position()[1]); break;
             default: //right
-                v=get_position()[0]+xinc;
+                v=super.get_position()[0]+xinc;
+                System.out.println("case 3");
                 super.set_position(v,get_position()[1]); break;
         }
     }
